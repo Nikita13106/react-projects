@@ -10,13 +10,29 @@ function App() {
   const passwordgenerator = useCallback(() => {
     let pass = "";
     let s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    if (number) s += "0123456789";
-    if (characters) s += "@#!%&*^$";
-    for (let i = 0; i < length; i++) {
+    let num = "0123456789";
+    let char = "@#!%&*^$";
+    let guaranteednum = "";
+    let guaranteedchar = "";
+    let remaininglength = length;
+    if (number) {
+      guaranteednum = num[Math.floor(Math.random() * num.length)];
+      remaininglength -= 1;
+      s += num;
+    }
+    if (characters) {
+      guaranteedchar = char[Math.floor(Math.random() * char.length)];
+      remaininglength -= 1;
+      s += char;
+    }
+
+    for (let i = 0; i < remaininglength; i++) {
       const index = Math.floor(Math.random() * s.length);
       pass += s.charAt(index);
     }
-    setpassword(pass);
+    let ans = pass + guaranteedchar + guaranteednum;
+    let finalpass = [...ans].sort(() => Math.random() - 0.5).join("");
+    setpassword(finalpass);
   }, [length, number, characters]);
 
   useEffect(() => {
@@ -47,7 +63,7 @@ function App() {
               type="text"
               placeholder="Password"
               readOnly
-              className=" bg-gray-200 rounded-xl px-4 py-2 flex-1 outline-0 "
+              className=" bg-gray-200 rounded-xl px-4 py-2 flex-1 outline-0 shadow-2xl"
               value={password}
               ref={passwordref}
             />
@@ -66,9 +82,9 @@ function App() {
               max={30}
               value={length}
               onChange={(e) => {
-                setlength(e.target.value);
+                setlength(Number(e.target.value));
               }}
-              className="flex-1 bg-gray-300 rounded-xl px-4 py-2 text-lg"
+              className="flex-1 bg-gray-300 rounded-xl  py-2 text-lg"
             />
             <label htmlFor="inputid">
               {" "}
@@ -79,21 +95,23 @@ function App() {
             <input
               type="checkbox"
               id="numbers"
+              checked={number}
               onChange={() => {
                 setnumber((prev) => !prev);
               }}
             />
-            <label htmlFor="numbers">Numbers</label>
+            <label htmlFor="numbers">Include Numbers</label>
           </div>
           <div className="flex items-center gap-x-3 my-5 text-lg accent-blue-500">
             <input
               type="checkbox"
               id="characters"
+              checked={characters}
               onChange={() => {
                 setcharacters((prev) => !prev);
               }}
             />
-            <label htmlFor="characters">Special Characters</label>
+            <label htmlFor="characters">Include Special Characters</label>
           </div>
         </div>
       </div>
