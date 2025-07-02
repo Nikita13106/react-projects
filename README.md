@@ -28,6 +28,8 @@ This repo contains a collection of small, focused React applications that help r
 | ------------------------ | --------------------------------------- | ---------------------------------------------------------------- |
 | Counter App              | Simple counter with increment/decrement | [Live](https://nikita13106.github.io/react-projects/01_project/) |
 | Background Color Changer | Changes background on button click      | [Live](https://nikita13106.github.io/react-projects/02_project/) |
+| Password Generator       | Generates a secure password             | [Live](https://nikita13106.github.io/react-projects/03_project/) |
+| Currency Converter       | Convert between currencies live         | [Live](https://nikita13106.github.io/react-projects/04_project/) |
 
 ---
 
