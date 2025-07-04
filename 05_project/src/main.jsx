@@ -21,13 +21,16 @@ import {githubInfo} from "./components/Github.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path="Home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="About" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="user/:userid" element={<User />} />
        <Route  loader={githubInfo} path="github" element={<Github />} />
     </Route>
-  )
+  ),
+   {
+    basename: "/react-projects/05_project" // 👈 REQUIRED for GitHub Pages routing
+  }
 );
 
 createRoot(document.getElementById("root")).render(

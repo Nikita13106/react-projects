@@ -31,7 +31,7 @@ export default function Header() {
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <NavLink
-                  to="Home"
+                  to="/"
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3${
                       isActive ? "text-orange-700" : "text-gray-700"
