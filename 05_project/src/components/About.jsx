@@ -4,7 +4,6 @@ export default function About() {
   return (
     <div className="py-20 bg-gradient-to-br from-yellow-50 via-pink-50 to-white text-gray-800">
       <div className="container mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row items-center gap-12">
-        
         {/* 📝 Text Section */}
         <div className="md:w-1/2 text-center md:text-left">
           <h2 className="text-4xl font-bold text-pink-600 mb-2">
@@ -15,14 +14,11 @@ export default function About() {
           </p>
 
           <p className="text-lg leading-relaxed">
-            At{" "}
-            <span className="font-semibold text-orange-500">
-              Cat Café Explorer
-            </span>
-            , we blend the love of cats with the joy of a warm cup of coffee.
-            This is your safe little digital café where you can discover
-            cat-friendly hangouts, explore different breeds, and fall in love
-            with every furry face you meet. 😻
+            At <span className="font-semibold text-orange-500">Cat Café</span>,
+            we blend the love of cats with the joy of a warm cup of coffee. This
+            is your safe little digital café where you can discover cat-friendly
+            hangouts, explore different breeds, and fall in love with every
+            furry face you meet. 😻
           </p>
 
           <p className="mt-4 text-base">
