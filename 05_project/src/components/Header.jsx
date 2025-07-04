@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo1.png";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="shadow sticky z-50 top-0">
       <nav className="bg-white border-gray-300 px-4 md:px-8 py-1.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-lg">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            type="button"
+            className="text-3xl font-bold text-gray-700 lg:hidden"
+          >
+            ≡
+          </button>
           <Link to="/" className="flex items-center">
             <img src={logo} className="mr-2 h-15 w-15" alt="Logo" />
           </Link>
@@ -25,12 +34,15 @@ export default function Header() {
             </Link>
           </div>
           <div
-            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            className={`${
+              isMenuOpen ? "block" : "hidden"
+            } w-full lg:flex lg:w-auto lg:order-1`}
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <NavLink
+                  onClick={() => setIsMenuOpen(false)}
                   to="/"
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3${
@@ -43,6 +55,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
+                  onClick={() => setIsMenuOpen(false)}
                   to="About"
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3${
@@ -55,6 +68,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
+                  onClick={() => setIsMenuOpen(false)}
                   to="contact"
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3${
@@ -67,6 +81,7 @@ export default function Header() {
               </li>
               <li>
                 <NavLink
+                  onClick={() => setIsMenuOpen(false)}
                   to="github"
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3${
